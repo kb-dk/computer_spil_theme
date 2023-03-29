@@ -1,0 +1,77 @@
+@font-face {
+  font-family: 'nowayregular';
+  src: url('../../font/noway-regular-webfont.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+body{
+  font-family: 'nowayregular', sans-serif;
+  font-size: 22px;
+  background-color: black;
+  color: white;
+  display: flex;
+  flex-direction: row;
+}
+
+ul li{
+  list-style: none;
+}
+
+a:link, a:visited, a:hover, a:active{
+  text-decoration: none;
+  color: white;
+}
+
+body .dialog-off-canvas-main-canvas{
+  width: 100%;
+}
+
+header,
+main {
+
+}
+
+header #block-languageswitcher ul{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+header #block-languageswitcher ul li{
+  background-color: white;
+  padding: 5px 10px;
+  margin: 0 5px;
+}
+
+header #block-languageswitcher ul li a{
+  color: black;
+}
+
+header #block-languageswitcher ul li.is-active{
+  /*display: none;*/
+}
+
+main ul {
+  -moz-column-count: 2;
+  -moz-column-gap: 80px;
+  -webkit-column-count: 2;
+  -webkit-column-gap: 80px;
+  column-count: 2;
+  column-gap: 80px;
+  margin: 0 0 150px 160px;
+}
+
+main ul li {
+  padding: 10px 0;
+}
+
+#block-computerspill-page-title{
+  margin: 100px 0 0 200px;
+}
+
+#block-computerspill-breadcrumbs ol{
+  list-style: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
