@@ -1,32 +1,65 @@
 @font-face {
-  font-family: 'nowayregular';
-  src: url('../../font/noway-regular-webfont.woff2') format('woff2');
+  font-family: 'BlockBertholdRegular';
+  src: url('../../font/BlockBertholdRegular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'HelveticaNeueLight';
+  src: url('../../font/HelveticaNeue-Light.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'HelveticaNeue';
+  src: url('../../font/HelveticaNeue.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 
 :root {
-  --font-size-title: 35px;
-  --font-size-circles: 40px;
-  --font-size-li: 30px;
+  --font-size-title: 40px;
+  --font-family-title: 'BlockBertholdRegular', sans-serif;
+  --font-size-body: 29px;
+  --font-family-body: 'HelveticaNeueLight', sans-serif;
+  --font-size-circles: 50px;
+  --font-family-list: 'HelveticaNeue', sans-serif;
+  --font-size-li: 40px;
   --font-size-breadcrumb: 30px;
+
   --padding-right-language-switcher: 45px;
   --padding-right-language-switcher-lis: 5px;
   --margin-left-main: 70px;
-  --margin-left-main-title: 18px;
-  --gap-between-columns: 80px;
-  --margin-bottom-main-lis: 40px;
-  --home-bottom: 10px;
-  --home-right: 20px;
-  --home-button-heigh: 100px;
+  --gap-between-columns: 100px;
+  --margin-bottom-main-lis: 30px;
+  --home-top: 10px;
+  --home-left: 20px;
+
+  /*--screen-font-size-title: 40px;*/
+  /*--screen-font-family-title: 'BlockBertholdRegular', sans-serif;*/
+  /*--screen-font-size-body: 29px;*/
+  /*--screen-font-family-body: 'HelveticaNeueLight', sans-serif;*/
+  /*--screen-font-size-circles: 50px;*/
+  /*--screen-font-family-list: 'HelveticaNeue', sans-serif;*/
+  /*--screen-font-size-li: 40px;*/
+  /*--screen-font-size-breadcrumb: 30px;*/
+  /*--screen-padding-right-language-switcher: 45px;*/
+  /*--screen-padding-right-language-switcher-lis: 5px;*/
+  /*--screen-margin-left-main: 70px;*/
+  /*--screen-gap-between-columns: 80px;*/
+  /*--screen-margin-bottom-main-lis: 30px;*/
+  /*--screen-home-bottom: 10px;*/
+  /*--screen-home-right: 20px;*/
+  /*--screen-home-button-heigh: 100px;*/
 }
 
 body{
-  font-family: 'nowayregular', sans-serif;
+  font-family: var(--font-family-body);
   background-color: black;
   color: white;
   display: flex;
   flex-direction: row;
+  font-size: var(--font-size-body);
 }
 
 a:link, a:visited, a:hover, a:active{
@@ -38,6 +71,7 @@ body .dialog-off-canvas-main-canvas{
   width: 100vw;
 }
 
+/* Language switcher */
 header #block-languageswitcher ul{
   display: flex;
   flex-direction: row;
@@ -67,42 +101,147 @@ header #block-languageswitcher ul li a{
 
 main {
   margin-left: var(--margin-left-main);
-}
-main ul {
-  column-count: 2;
-  column-gap: var(--gap-between-columns);
+  margin-right: var(--margin-left-main);
 }
 
-main ul li{
+/* Title */
+main #block-computerspill-page-title{
+  font-family: var(--font-family-title);
+  font-size: var(--font-size-title);
+  font-weight: normal;
+  text-transform: uppercase;
+}
+
+/* List */
+main ul,
+main ol{
+  /*column-count: 2;*/
+  /*column-gap: var(--gap-between-columns);*/
+}
+
+main .views-element-container > div{
+  display: flex;
+  flex-flow: row wrap;
+  margin-left: 42px;
+}
+
+main .views-element-container .views-row{
+  list-style-type: disc;
+  display: list-item;
+  width: calc(50% - 30px);
+  padding-right: 30px;
+}
+
+main ul li:not(.kint*),
+main ol li,
+main .views-element-container .views-row{
+  font-family: var(--font-family-list);
   font-size: var(--font-size-circles);
   margin-bottom: var(--margin-bottom-main-lis);
 }
 
-main ul li a{
+main ul li a,
+main ol li a,
+main .views-element-container .views-row a{
   font-size: var(--font-size-li);
   font-weight: bold;
 }
 
-main #block-computerspill-page-title{
-  font-size: var(--font-size-title);
-  margin-left: var(--margin-left-main-title);
+/* Content */
+main div.align-left img{
+  width: 100px;
+  height: 100px;
 }
 
-#block-computerspill-breadcrumbs ol{
-  list-style: none;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
+/* Home icon */
 [id^="block-home"],
-[id^="block-hjaem"]{
-  position: absolute;
-  bottom: var(--home-bottom);
-  right: var(--home-right);
+[id^="block-hjem"]{
+  position: fixed;
+  top: var(--home-top);
+  left: var(--home-left);
+  z-index: 9999;
 }
 
-video{
+/*#block-computerspill-breadcrumbs ol{*/
+/*  list-style: none;*/
+/*  position: absolute;*/
+/*  top: 0;*/
+/*  left: 0;*/
+/*}*/
+
+/*video{*/
+/*  width: 100vw;*/
+/*  height: calc(100vh - var(--home-button-heigh));*/
+/*  margin-left: calc((var(--margin-left-main) + 10px) * -1);*/
+/*  position: absolute;*/
+/*  top: 0;*/
+/*}*/
+
+
+
+/* Ipad */
+.ipad.list .views-row a{
+  line-height: 20px;
+  font-size: 30px;
+}
+
+.ipad.list .views-row{
+  margin-bottom: 20px;
+  width: calc(50% - var(--gap-between-columns));
+  padding-right: var(--gap-between-columns);
+}
+
+.ipad.list h1{
+  margin-bottom: 120px;
+}
+
+.ipad h1{
+  font-size: 50px;
+  margin-bottom: 60px;
+}
+
+.ipad main{
+  margin-left: 150px;
+  margin-top: 70px;
+}
+
+.ipad figure,
+.ipad img,
+.ipad video{
+  --ipad-figure-margin: 40px;
+  max-width: 100%;
+  height: auto;
+  width: calc(100% - var(--ipad-figure-margin));
+  margin-left: calc( var(--ipad-figure-margin) / 2 );
+  margin-right: calc( var(--ipad-figure-margin) / 2 );
+}
+
+/* Screen */
+.screen.list main{
+  margin-top: 100px;
+  margin-left: 200px;
+}
+
+.screen.list h1{
+  margin-bottom: 150px;
+}
+
+.screen.list .views-row{
+  margin-bottom: 50px;
+}
+
+.screen.list .views-row a{
+  font-size: 50px;
+}
+
+.screen,
+.screen h2{
+  font-size: 39px;
+}
+
+/* Media */
+.media video{
+  --home-button-heigh: 0px;
   width: 100vw;
   height: calc(100vh - var(--home-button-heigh));
   margin-left: calc((var(--margin-left-main) + 10px) * -1);
@@ -110,4 +249,23 @@ video{
   top: 0;
 }
 
+/* Black top and bottom rows */
+[id^="block-blackrow"]{
+  position: fixed;
+  height: 40px;
+  background-color: black;
+  width: 100%;
+  left: 0;
+}
 
+[id^="block-blackrow"] p{
+  display: none;
+}
+
+header [id^="block-blackrow"]{
+  top: 0;
+}
+
+footer [id^="block-blackrow"]{
+  bottom: 0;
+}

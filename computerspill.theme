@@ -9,14 +9,36 @@
  * Implements hook_preprocess_HOOK() for html.html.twig.
  */
 function computerspill_preprocess_html(&$variables) {
+  //  Add taxonomy parent name, and 'list' in case of taxonomy page, and 'home' in case of home page to the body tag
+  if ($variables['root_path'] == 'node'){
+    $node = \Drupal::routeMatch()->getParameter('node');
+    $termId = $node->get('field_device')->getValue()[0]['target_id'];
+  }
+  if ($variables['root_path'] == 'media'){
+    $variables['attributes']['class'][] = 'media';
+  }
+  $taxonomy_name = '';
+  if ($variables['root_path'] == 'taxonomy'){
+    $variables['attributes']['class'][] = 'list';
+    $taxonomy = \Drupal::routeMatch()->getParameter('taxonomy_term');
+    $termId = $taxonomy->id();
+    $taxonomy_name = $taxonomy->getName();
+    $variables['attributes']['class'][] = str_replace(' ', '_', strtolower($taxonomy_name));
+  }
 
+  if ($taxonomy_name !== 'home' && isset($termId)){
+    $parent = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadParents($termId);
+    $parent = reset($parent);
+    $variables['attributes']['class'][] = strtolower($parent->getName());
+  }
+
+//  ksm($variables);
 }
 
 /**
  * Implements hook_preprocess_HOOK() for page.html.twig.
  */
 function computerspill_preprocess_page(&$variables) {
-
 }
 
 /**
@@ -24,4 +46,13 @@ function computerspill_preprocess_page(&$variables) {
  */
 function computerspill_preprocess_node(&$variables) {
 
+
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for node.html.twig.
+ */
+function computerspill_preprocess_media(&$variables) {
+
+  ksm($variables);
 }
