@@ -25,7 +25,7 @@
   --font-size-circles: 50px;
   --font-family-list: 'HelveticaNeue', sans-serif;
   --font-size-li: 40px;
-  --font-size-breadcrumb: 30px;
+  --font-size-breadcrumb: 25px;
 
   --padding-right-language-switcher: 45px;
   --padding-right-language-switcher-lis: 5px;
@@ -60,6 +60,11 @@ body{
   display: flex;
   flex-direction: row;
   font-size: var(--font-size-body);
+}
+
+p{
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 a:link, a:visited, a:hover, a:active{
@@ -102,6 +107,7 @@ header #block-languageswitcher ul li a{
 main {
   margin-left: var(--margin-left-main);
   margin-right: var(--margin-left-main);
+  margin-bottom: 50px;
 }
 
 /* Title */
@@ -162,6 +168,14 @@ main div.align-left img{
   z-index: 9999;
 }
 
+[id^="block-home"] img,
+[id^="block-hjem"] img{
+  width: 45px;
+  height: 45px;
+  padding-top: 10px;
+  padding-left: 10px;
+}
+
 /*#block-computerspill-breadcrumbs ol{*/
 /*  list-style: none;*/
 /*  position: absolute;*/
@@ -182,13 +196,17 @@ main div.align-left img{
 /* Ipad */
 .ipad.list .views-row a{
   line-height: 20px;
-  font-size: 30px;
+  font-size: 25px;
 }
 
 .ipad.list .views-row{
-  margin-bottom: 20px;
-  width: calc(50% - var(--gap-between-columns));
+  margin-bottom: 40px;
+  width: 100%;
   padding-right: var(--gap-between-columns);
+}
+
+.ipad.list main{
+  margin-right:0;
 }
 
 .ipad.list h1{
@@ -203,6 +221,12 @@ main div.align-left img{
 .ipad main{
   margin-left: 150px;
   margin-top: 70px;
+  margin-right: 125px;
+  font-size: 25px;
+}
+
+.ipad main .views-element-container > div{
+  margin-left: 21px;
 }
 
 .ipad figure,
@@ -220,6 +244,14 @@ main div.align-left img{
 .screen.list main{
   margin-top: 100px;
   margin-left: 200px;
+  margin-right: 0;
+}
+
+
+.screen main{
+  margin-left: 250px;
+  margin-right: 250px;
+  margin-top: 100px;
 }
 
 .screen.list h1{
