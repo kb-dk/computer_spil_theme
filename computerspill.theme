@@ -49,8 +49,33 @@ function computerspill_preprocess_node(&$variables) {
 }
 
 /**
- * Implements hook_preprocess_HOOK() for node.html.twig.
+ * Implements hook_preprocess_HOOK() for block.html.twig.
  */
 function computerspill_preprocess_block(&$variables) {
   $variables['base_path'] = base_path();
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for image.html.twig.
+ */
+function computerspill_preprocess_image(&$variables) {
+//  Adds vertical or horizontal to images as a class
+  $width = $variables['width'];
+  $height = $variables['height'];
+  if ($height > $width){
+    $variables['attributes']['class'][] = 'vertical';
+  } else {
+    $variables['attributes']['class'][] = 'horizontal';
+  }
+}
+
+
+/**
+ * Implements hook_preprocess_HOOK() for image.html.twig.
+ */
+function computerspill_preprocess_file_video(&$variables) {
+  $media = \Drupal::routeMatch()->getParameter('media');
+  if ($media){
+    $variables['autoplay'] = 'autoplay';
+  }
 }
