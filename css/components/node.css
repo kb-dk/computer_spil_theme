@@ -180,23 +180,6 @@ main img{
   padding-left: 10px;
 }
 
-/*#block-computerspill-breadcrumbs ol{*/
-/*  list-style: none;*/
-/*  position: absolute;*/
-/*  top: 0;*/
-/*  left: 0;*/
-/*}*/
-
-/*video{*/
-/*  width: 100vw;*/
-/*  height: calc(100vh - var(--home-button-heigh));*/
-/*  margin-left: calc((var(--margin-left-main) + 10px) * -1);*/
-/*  position: absolute;*/
-/*  top: 0;*/
-/*}*/
-
-
-
 /* Ipad */
 .ipad.list .views-row a{
   line-height: 20px;
@@ -245,9 +228,7 @@ main img{
   --ipad-figure-margin: 40px;
   max-width: 100%;
   height: auto;
-  width: calc(100% - var(--ipad-figure-margin));
-  margin-left: calc( var(--ipad-figure-margin) / 2 );
-  margin-right: calc( var(--ipad-figure-margin) / 2 );
+  width: 100%;
 }
 
 .ipad img.vertical{
