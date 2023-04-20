@@ -225,7 +225,6 @@ main img{
 .ipad figure,
 .ipad img,
 .ipad video{
-  --ipad-figure-margin: 40px;
   max-width: 100%;
   height: auto;
   width: 100%;
