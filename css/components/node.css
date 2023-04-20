@@ -36,7 +36,8 @@
   --home-left: 20px;
 }
 
-body{
+main,
+header{
   font-family: var(--font-family-body);
   background-color: black;
   color: white;
@@ -45,19 +46,25 @@ body{
   font-size: var(--font-size-body);
 }
 
-main p{
+main p,
+header p{
   margin-top: 0;
   margin-bottom: 0;
 }
 
-main h1{
+main h1,
+header h1{
   font-style: italic;
 }
 
 main a:link,
+header a:link,
 main a:visited,
+header a:visited,
 main a:hover,
-main a:active{
+header a:hover,
+main a:active,
+header a:active{
   text-decoration: none;
   color: white;
 }
@@ -264,7 +271,7 @@ main img{
 /* Black top and bottom rows */
 [id^="block-blackrow"]{
   position: fixed;
-  height: 40px;
+  height: 38px;
   background-color: black;
   width: 100%;
   left: 0;
