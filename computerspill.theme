@@ -9,7 +9,7 @@
  * Implements hook_preprocess_HOOK() for html.html.twig.
  */
 function computerspill_preprocess_html(&$variables) {
-  //  Add taxonomy parent name, and 'list' in case of taxonomy page, and 'home' in case of home page to the body tag
+  //  Add taxonomy parent name, and 'list' in case of taxonomy page, and 'home' in case of home page, as class to the body tag
   if ($variables['root_path'] == 'node'){
     $node = \Drupal::routeMatch()->getParameter('node');
     $termId = $node->get('field_device')->getValue()[0]['target_id'];
@@ -29,7 +29,9 @@ function computerspill_preprocess_html(&$variables) {
   if ($taxonomy_name !== 'home' && isset($termId)){
     $parent = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadParents($termId);
     $parent = reset($parent);
-    $variables['attributes']['class'][] = strtolower($parent->getName());
+    if ($parent){
+      $variables['attributes']['class'][] = strtolower($parent->getName());
+    }
   }
 
 //  ksm($variables);
