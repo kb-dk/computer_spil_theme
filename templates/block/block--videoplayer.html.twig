@@ -1,3 +1,28 @@
+<script>
+function redirect() {
+  let homeImgs = document.getElementsByTagName('img');
+  for(let item of homeImgs){
+    if(item.src.includes('home')){
+      item.click();
+    }
+  }
+}
+
+var timer;
+
+function resetTimer(){
+  clearTimeout(timer);
+  timer = setTimeout(redirect, 10000);
+}
+
+
+window.onload = function() {
+  window.addEventListener('click', resetTimer);
+  window.addEventListener('mousemove', resetTimer);
+  window.addEventListener('keypress', resetTimer);
+  resetTimer();
+};
+</script>
 <div>
   <a href="{{ url('<current>') }}/video">
     <img src="{{ base_path ~ directory }}/images/video-player.png" alt="video player" style="width:110px; height:110px; padding-top: 100px;">

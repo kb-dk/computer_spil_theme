@@ -15,6 +15,38 @@
 * @ingroup themeable
 */
 #}
+<script>
+   var videoElement;
+   var timeout;
+
+
+
+   function redirectToPage()
+
+{      window.location.href = "../../";    }
+
+
+   function checkVideoStatus() {
+     if (videoElement.ended || videoElement.paused)
+
+{ redirectToPage();      }
+else
+
+{ timeout = setTimeout(checkVideoStatus, 6000);      }
+   }
+
+
+
+   window.onload = function() {
+     videoElement = document.getElementsByTagName('video')[0];
+     videoElement.addEventListener("ended", redirectToPage);
+     videoElement.addEventListener("pause", function()
+
+{      timeout = setTimeout(checkVideoStatus, 6000);    }
+);
+   };
+</script>
+
 <video {{ attributes }} disablepictureinpicture controlslist="nodownload noplaybackrate nofullscreen" {{ autoplay }}>
   {% for file in files %}
     <source {{ file.source_attributes }} />
