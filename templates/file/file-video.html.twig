@@ -16,35 +16,42 @@
 */
 #}
 <script>
-   var videoElement;
-   var timeout;
+  const keywords = ['musik-i-computerspil','1980', '1990', '2000', '2010', '2020'];
+  const isScreen =  keywords.some(keyword => window.location.href.includes(keyword));
 
+  var videoElement;
+  var timeout;
 
-
-   function redirectToPage()
-
-{      window.location.href = "../../";    }
+    function redirectToPage() {
+      let homeImgs = document.getElementsByTagName('img');
+      for(let item of homeImgs){
+        if(item.src.includes('home')){
+          item.click();
+        }
+      }
+    }
 
 
    function checkVideoStatus() {
-     if (videoElement.ended || videoElement.paused)
-
-{ redirectToPage();      }
-else
-
-{ timeout = setTimeout(checkVideoStatus, 6000);      }
+     if (videoElement.ended || videoElement.paused){
+         redirectToPage(false);
+     }
+    else {
+        timeout = setTimeout(checkVideoStatus, 6000);
+    }
    }
 
-
-
    window.onload = function() {
-     videoElement = document.getElementsByTagName('video')[0];
-     videoElement.addEventListener("ended", redirectToPage);
-     videoElement.addEventListener("pause", function()
-
-{      timeout = setTimeout(checkVideoStatus, 6000);    }
-);
+    if (isScreen) {
+         videoElement = document.getElementsByTagName('video')[0];
+         videoElement.addEventListener("ended", redirectToPage);
+         videoElement.addEventListener("pause", function(){
+             timeout = setTimeout(checkVideoStatus, 6000);
+            }
+        );
+    }
    };
+
 </script>
 
 <video {{ attributes }} disablepictureinpicture controlslist="nodownload noplaybackrate nofullscreen" {{ autoplay }}>
