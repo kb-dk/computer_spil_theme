@@ -22,36 +22,63 @@
   var videoElement;
   var timeout;
 
-    function redirectToPage() {
-      let homeImgs = document.getElementsByTagName('img');
-      for(let item of homeImgs){
-        if(item.src.includes('home')){
-          item.click();
-        }
-      }
-    }
-
-
-   function checkVideoStatus() {
-     if (videoElement.ended || videoElement.paused){
-         redirectToPage(false);
-     }
-    else {
-        timeout = setTimeout(checkVideoStatus, 6000);
-    }
-   }
-
    window.onload = function() {
     if (isScreen) {
          videoElement = document.getElementsByTagName('video')[0];
-         videoElement.addEventListener("ended", redirectToPage);
-         videoElement.addEventListener("pause", function(){
-             timeout = setTimeout(checkVideoStatus, 6000);
-            }
-        );
+         videoElement.addEventListener("ended", videoEnded);
+         videoElement.addEventListener("pause", videoPaused);
     }
    };
 
+   function resetTimer() {
+     clearTimeout(timeout)
+   }
+
+
+   function videoPaused() {
+     resetTimer();
+     if (videoElement.paused){
+       timeout = setTimeout(validateStatusAndRedirect, 10000);
+     } else {
+    console.log("Paused other!")
+     }
+   }
+
+
+   // The exhibition guest can start the video again
+   function videoEnded() {
+     resetTimer()
+     videoElement.currentTime = 0;
+     videoElement.pause;
+     timeout = setTimeout(validateStatusAndRedirect, 10000);
+   }
+
+    //We have seen unwanted redirects due to eg. fast forwarding. Futhermore paused are set at ended status.
+    //With this we try to avoid these incidents
+    function validateStatusAndRedirect() {
+      if (!videoElement.paused) {
+        console.log ("still playing!");
+      } else {
+        let reallyEnded = videoElement.currentTime == videoElement.duration;
+        if (videoElement.ended && !reallyEnded) {
+         console.log('fake ending');
+        } else {
+          if(videoElement.paused) {
+           doRedirect();
+          }
+        }
+      }
+
+    }
+
+   function doRedirect(){
+    let homeImgs = document.getElementsByTagName('img');
+    for(let item of homeImgs){
+      if(item.src.includes('home')){
+        item.click();
+      }
+    }
+   }
 </script>
 
 <video {{ attributes }} disablepictureinpicture controlslist="nodownload noplaybackrate nofullscreen" {{ autoplay }}>
