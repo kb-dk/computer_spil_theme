@@ -15,74 +15,66 @@
 * @ingroup themeable
 */
 #}
-// <script>
-//   const keywords = ['musik-i-computerspil','1980', '1990', '2000', '2010', '2020'];
-//   const isScreen =  keywords.some(keyword => window.location.href.includes(keyword));
-//
-//   var videoElement;
-//   var timeout;
-//
-//    window.onload = function() {
-//     if (isScreen) {
-//          videoElement = document.getElementsByTagName('video')[0];
-//          videoElement.addEventListener("ended", videoEnded, {once : true});
-//          videoElement.addEventListener("pause", videoPaused);
-//     }
-//    };
-//
-//    function resetTimer() {
-//      clearTimeout(timeout);
-//    }
-//
-//
-//    function videoPaused() {
-//      resetTimer();
-//      if (videoElement.paused){
-//        timeout = setTimeout(validateStatusAndRedirect, 10000);
-//      } else {
-//     console.log("Paused other!");
-//      }
-//    }
-//
-//
-//    // The exhibition guest can start the video again
-//    function videoEnded() {
-//      if (!videoElement.paused){
+<script>
+  const keywords = ['musik-i-computerspil','1980', '1990', '2000', '2010', '2020'];
+  const isScreen =  keywords.some(keyword => window.location.href.includes(keyword));
+
+  var videoElement;
+  var timeout;
+
+   window.onload = function() {
+    if (isScreen) {
+         videoElement = document.getElementsByTagName('video')[0];
+         videoElement.addEventListener("ended", videoEnded, {once : true});
+         videoElement.addEventListener("pause", videoPaused);
+    }
+   };
+
+   function resetTimer() {
+     clearTimeout(timeout);
+   }
+
+
+   function videoPaused() {
+     resetTimer();
+     if (videoElement.paused){
+       timeout = setTimeout(validateStatusAndRedirect, 10000);
+     } else {
+    console.log("Paused other!");
+     }
+   }
+
+
+   // The exhibition guest can start the video again
+   function videoEnded() {
+     if (!videoElement.paused){
 //       resetTimer();
-//       videoElement.pause();
+      videoElement.pause();
 //       videoElement.currentTime = 0;
 //       videoElement.load();
 //       timeout = setTimeout(validateStatusAndRedirect, 10000);
-//      }
-//    }
-//
-//     //We have seen unwanted redirects due to eg. fast forwarding. Futhermore paused are set at ended status.
-//     //With this we try to avoid these incidents
-//     function validateStatusAndRedirect() {
-//       if (!videoElement.paused) {
-//         console.log ("still playing!");
-//       } else {
-// //         let reallyEnded = videoElement.currentTime === 0;
-// //         if (videoElement.ended && !reallyEnded) {
-// //          console.log('fake ending');
-// //         } else {
-//           if(videoElement.paused) {
-//            doRedirect();
-//           }
-// //         }
-//       }
-//
-//     }
-//
-//    function doRedirect(){
-//     let homeImgs = document.getElementsByTagName('img');
-//     for(let item of homeImgs){
-//       if(item.src.includes('home')){
-//         item.click();
-//       }
-//     }
-//    }
-// </script>
+     }
+   }
+
+    //We have seen unwanted redirects due to eg. fast forwarding. Futhermore paused are set at ended status.
+    //With this we try to avoid these incidents
+    function validateStatusAndRedirect() {
+      if (!videoElement.paused) {
+        console.log ("still playing!");
+      } else {
+           doRedirect();
+      }
+    }
+
+   function doRedirect(){
+    let homeImgs = document.getElementsByTagName('img');
+    for(let item of homeImgs){
+      if(item.src.includes('home')){
+        item.click();
+      }
+    }
+   }
+</script>
 
 <video {{ attributes }} disablepictureinpicture controlslist="nodownload noplaybackrate nofullscreen" {{ autoplay }}>
   {% for file in files %}
