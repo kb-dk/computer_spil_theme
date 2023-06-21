@@ -47,7 +47,7 @@
 
    // The exhibition guest can start the video again
    function videoEnded() {
-     if (!videoElement.paused){
+//      if (!videoElement.paused){
 //       resetTimer();
       videoElement.pause();
       videoElement.load();
@@ -58,7 +58,7 @@
       videoElement.currentTime = 2;
       videoElement.load();
 //       timeout = setTimeout(validateStatusAndRedirect, 10000);
-     }
+//      }
    }
 
     //We have seen unwanted redirects due to eg. fast forwarding. Futhermore paused are set at ended status.
