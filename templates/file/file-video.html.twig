@@ -50,8 +50,10 @@
      if (!videoElement.paused){
 //       resetTimer();
       videoElement.pause();
-//       videoElement.currentTime = 0;
-//       videoElement.load();
+      videoElement.load();
+      videoElement.currentTime = 0;
+      videoElement.currentTime = 1;
+      videoElement.currentTime = 2;
 //       timeout = setTimeout(validateStatusAndRedirect, 10000);
      }
    }
