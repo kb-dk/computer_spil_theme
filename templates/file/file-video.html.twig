@@ -48,8 +48,8 @@
    // The exhibition guest can start the video again
    function videoEnded() {
      resetTimer();
-     videoElement.currentTime = 0;
      videoElement.pause();
+     videoElement.currentTime = 0;
      timeout = setTimeout(validateStatusAndRedirect, 10000);
    }
 
