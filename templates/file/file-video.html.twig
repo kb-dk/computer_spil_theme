@@ -31,7 +31,7 @@
    };
 
    function resetTimer() {
-     clearTimeout(timeout)
+     clearTimeout(timeout);
    }
 
 
@@ -40,14 +40,14 @@
      if (videoElement.paused){
        timeout = setTimeout(validateStatusAndRedirect, 10000);
      } else {
-    console.log("Paused other!")
+    console.log("Paused other!");
      }
    }
 
 
    // The exhibition guest can start the video again
    function videoEnded() {
-     resetTimer()
+     resetTimer();
      videoElement.currentTime = 0;
      videoElement.pause;
      timeout = setTimeout(validateStatusAndRedirect, 10000);
