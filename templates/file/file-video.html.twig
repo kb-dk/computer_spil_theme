@@ -51,6 +51,7 @@
       resetTimer();
       videoElement.pause();
       videoElement.currentTime = 0;
+      videoElement.load();
       timeout = setTimeout(validateStatusAndRedirect, 10000);
      }
    }
