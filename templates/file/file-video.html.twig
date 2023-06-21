@@ -62,14 +62,14 @@
       if (!videoElement.paused) {
         console.log ("still playing!");
       } else {
-        let reallyEnded = videoElement.currentTime === 0;
-        if (videoElement.ended && !reallyEnded) {
-         console.log('fake ending');
-        } else {
+//         let reallyEnded = videoElement.currentTime === 0;
+//         if (videoElement.ended && !reallyEnded) {
+//          console.log('fake ending');
+//         } else {
           if(videoElement.paused) {
            doRedirect();
           }
-        }
+//         }
       }
 
     }
