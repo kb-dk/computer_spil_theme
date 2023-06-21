@@ -25,7 +25,7 @@
    window.onload = function() {
     if (isScreen) {
          videoElement = document.getElementsByTagName('video')[0];
-         videoElement.addEventListener("ended", videoEnded);
+         videoElement.addEventListener("ended", videoEnded, once);
          videoElement.addEventListener("pause", videoPaused);
     }
    };
