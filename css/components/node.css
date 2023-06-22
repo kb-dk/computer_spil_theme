@@ -317,9 +317,9 @@ footer [id^="block-blackrow"]{
   height: 100%;
   background: radial-gradient(
     ellipse at center,
-    rgba(0, 128, 172, 1) 0%,
-    rgba(0, 128, 172, 1) 70%,
-    rgba(0, 128, 172, 0) 70.3%
+    rgba(128, 0, 0, 1) 0%,
+    rgba(128, 0, 0, 1) 70%,
+    rgba(128, 0, 0, 0) 70.3%
   );
   position: relative;
   margin: 0;
