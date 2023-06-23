@@ -335,6 +335,7 @@ footer [id^="block-blackrow"]{
   position: relative;
   margin: 0;
   color: white;
+  z-index: 1000;
 }
 
 #block-badge-ipad-da::before,
