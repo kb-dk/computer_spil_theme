@@ -311,6 +311,12 @@ footer [id^="block-blackrow"]{
   position: absolute;
   bottom: 40px;
   right: 40px;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(102, 13, 40, 1) 0%,
+    rgba(102, 13, 40, 1) 70%,
+    rgba(102, 13, 40, 0) 70.3%
+  );
 }
 
 #block-badge-ipad-da div,
@@ -319,12 +325,6 @@ footer [id^="block-blackrow"]{
 #block-badge-screen-en div{
   width: 100%;
   height: 100%;
-  background: radial-gradient(
-    ellipse at center,
-    rgba(102, 13, 40, 1) 0%,
-    rgba(102, 13, 40, 1) 70%,
-    rgba(102, 13, 40, 0) 70.3%
-  );
 }
 
 #block-badge-ipad-da p,
