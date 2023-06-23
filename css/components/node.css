@@ -338,10 +338,10 @@ footer [id^="block-blackrow"]{
   color: white;
 }
 
-#block-badge-ipad-da p::before,
-#block-badge-screen-da p::before,
-#block-badge-ipad-en p::before,
-#block-badge-screen-en p::before {
+#block-badge-ipad-da::before,
+#block-badge-screen-da::before,
+#block-badge-ipad-en::before,
+#block-badge-screen-en::before {
   content: "";
   width: 50%;
   height: 100%;
