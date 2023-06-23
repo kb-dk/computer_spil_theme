@@ -332,10 +332,13 @@ footer [id^="block-blackrow"]{
 #block-badge-ipad-en p,
 #block-badge-screen-en p{
   width: 100%;
-  position: relative;
+  position: absolute;
   margin: 0;
   color: white;
   z-index: 1000;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
 }
 
 #block-badge-ipad-da::before,
